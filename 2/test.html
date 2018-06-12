@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Leap year</title>
+</head>
+<body>
+    <h2>Tukaj preveri, ali je leto prestopno ali ne</h2>
+    <form>
+        <input type="number">
+        <button type="submit">Preveri</button>
+    </form>
+    <script>
+        const formEl = document.querySelector("form"),
+            inputEl = document.querySelector("input")
+
+        function onSubmit(e) {
+            e.preventDefault()
+
+            const year = inputEl.value
+
+            alert(`Prestopno leto (formula): ${checkLeapYear(year)}`)
+            // alert(`Prestopno leto (februar tega leta ima 29 dni): ${new Date(year, 2, 0).getDate() == 29}`)
+        }
+
+        /**
+         * Check if year is a leap year according to specified year. 
+         * Note: this could very well be just one expression but it would be harder to decipher
+         */
+        function checkLeapYear(n) {
+            if (n % 4 != 0) return false 
+            if (n % 100 != 0) return true
+            return n % 400 == 0
+        }
+
+        formEl.addEventListener('submit', onSubmit, false)
+    </script>
+</body>
+</html>
